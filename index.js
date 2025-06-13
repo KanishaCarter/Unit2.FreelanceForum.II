@@ -19,6 +19,12 @@ const freelancerArray = [
         {name:"Eve", occupation: "Engineer", price: 200}
 ]
 
+function avgRate(array) {
+    const prices = array.map((person) => person.price);
+    const total = prices.reduce((accumulator, currentValue)=> accumulator + currentValue, 0);
+    return (total / prices.length).toFixed(2);
+}
+
 const body = document.querySelector("body");
 
 const container = document.createElement("div");
@@ -29,6 +35,11 @@ const h1 = document.createElement("h1");
 h1.textContent = "The Freelancer Forum";
 container.append(h1);
 container.append(tableContainer);
+
+const p = document.createElement("p");
+p.textContent = `The average rate is $${avgRate(freelancerArray)}`;
+h1.append(p);
+
 
 const table = document.createElement("table");
 tableContainer.append(table);
@@ -46,26 +57,29 @@ priceHeader.textContent = "PRICE";
 table.append(priceHeader);
 
 
-function avgRate(array) {
-    const prices = array.map((person) => person.price);
-    const total = prices.reduce((accumulator, currentValue)=> accumulator + currentValue, 0);
-    return (total / prices.length).toFixed(2);
-}
-
-
-
 function displayFreelancers(array) {
-    array.map((person => {
-        const name = document.createElement("td");
-        name.textContent = `${person.name}`;
-        tableRow.append(name);
-        
-        const occupation = document.createElement("td");
-        occupation.textContent = `${person.occupation}`;
-        tableRow.append(occupation);
+    const onePerson  = array.forEach((person)=>{
+        const name = person.name;
+        const occupation = person.occupation;
+        const price = person.price;
 
-        const price = document.createElement("td");
-        price.textContent = `${person.price}`;
-        tableRow.append(price);
-    }))
+        const tableRow = document.createElement("tr");
+        table.append(tableRow);
+
+        const nameData = document.createElement("td");
+        nameData.textContent = `${person.name}`;
+        tableRow.append(nameData);
+
+        const jobData = document.createElement("td");
+        jobData.textContent = `${person.occupation}`;
+        tableRow.append(jobData);
+
+        const priceData = document.createElement("td");
+        priceData.textContent = `${person.price}`;
+        tableRow.append(priceData);
+        
+    })
+
 }
+
+displayFreelancers(freelancerArray);
