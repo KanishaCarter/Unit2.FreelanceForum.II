@@ -15,7 +15,7 @@ const freelancerArray = [
         {name:"Alice", occupation: "Writer", price: 40,},
         {name:"Bob", occupation: "Teacher", price: 30},
         {name:"Carol", occupation: "Programmer", price: 175},
-        {name:"Dave", occupations: "Designer", price: 100},
+        {name:"Dave", occupation: "Designer", price: 100},
         {name:"Eve", occupation: "Engineer", price: 200}
 ]
 
@@ -36,10 +36,20 @@ tableContainer.append(table);
 const tableHeader = document.createElement("th");
 table.append(tableHeader);
 
+
+
 const tableRow = document.createElement("tr");
 table.append(tableRow);
 
 const tableData = document.createElement("td");
 tableRow.append(tableData);
 
+function avgRate(array) {
+    const prices = array.map((person) => person.price);
+    const total = prices.reduce((accumulator, currentValue)=> accumulator + currentValue, 0);
+    return (total / prices.length).toFixed(2);
+}
+
+tableHeader.textContent = `The average rate is $${avgRate(freelancerArray)}`;
+table.append(tableHeader);
 
