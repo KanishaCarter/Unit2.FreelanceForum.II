@@ -30,13 +30,11 @@ h1.textContent = "The Freelancer Forum";
 container.append(h1);
 container.append(tableContainer);
 
-
-const avgPriceH2 = document.createElement("h2");
-avgPriceH2.textContent = `The average rate is `;
-tableContainer.append(avgPriceH2);
-
 const table = document.createElement("table");
 tableContainer.append(table);
+
+const tableHeader = document.createElement("th");
+table.append(tableHeader);
 
 const tableRow = document.createElement("tr");
 table.append(tableRow);
@@ -44,7 +42,4 @@ table.append(tableRow);
 const tableData = document.createElement("td");
 tableRow.append(tableData);
 
-function avgRate(freelancerArray) {
-    
-}
 
