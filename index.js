@@ -82,4 +82,5 @@ function displayFreelancers(array) {
 
 }
 
+
 displayFreelancers(freelancerArray);
