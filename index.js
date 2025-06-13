@@ -33,16 +33,18 @@ container.append(tableContainer);
 const table = document.createElement("table");
 tableContainer.append(table);
 
-const tableHeader = document.createElement("th");
-table.append(tableHeader);
+const nameHeader = document.createElement("th");
+nameHeader.textContent = "NAME";
+table.append(nameHeader);
 
+const occupationHeader = document.createElement("th");
+occupationHeader.textContent = "OCCUPATION";
+table.append(occupationHeader);
 
+const priceHeader = document.createElement("th");
+priceHeader.textContent = "PRICE";
+table.append(priceHeader);
 
-const tableRow = document.createElement("tr");
-table.append(tableRow);
-
-const tableData = document.createElement("td");
-tableRow.append(tableData);
 
 function avgRate(array) {
     const prices = array.map((person) => person.price);
@@ -50,6 +52,20 @@ function avgRate(array) {
     return (total / prices.length).toFixed(2);
 }
 
-tableHeader.textContent = `The average rate is $${avgRate(freelancerArray)}`;
-table.append(tableHeader);
 
+
+function displayFreelancers(array) {
+    array.map((person => {
+        const name = document.createElement("td");
+        name.textContent = `${person.name}`;
+        tableRow.append(name);
+        
+        const occupation = document.createElement("td");
+        occupation.textContent = `${person.occupation}`;
+        tableRow.append(occupation);
+
+        const price = document.createElement("td");
+        price.textContent = `${person.price}`;
+        tableRow.append(price);
+    }))
+}
