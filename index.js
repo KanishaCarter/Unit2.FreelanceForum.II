@@ -13,12 +13,12 @@ const NUM_FREELANCERS = 100;
 
 
 // Freelancer Array
-const freelancerArray = [
-        {name:"Alice", occupation: "Writer", price: 40,},
-        {name:"Bob", occupation: "Teacher", price: 30},
-        {name:"Carol", occupation: "Programmer", price: 175},
-        {name:"Dave", occupation: "Designer", price: 100},
-        {name:"Eve", occupation: "Engineer", price: 200}
+const NUM_FREELANCER = [
+    {name:"Alice", occupation: "Writer", price: 40},
+    {name:"Bob", occupation: "Teacher", price: 30},
+    {name:"Carol", occupation: "Programmer", price: 175},
+    {name:"Dave", occupation: "Designer", price: 100},
+    {name:"Eve", occupation: "Engineer", price: 200}
 ]
 
 // Function calculates average price
@@ -51,7 +51,7 @@ container.append(tableContainer);
 // Variable stores paragraph element
 const p = document.createElement("p");
 // Adds text of average rate to paragraph
-p.textContent = `The average rate is $${avgRate(freelancerArray)}`;
+p.textContent = `The average rate is $${avgRate(NUM_FREELANCER)}`;
 // Append paragraph of average rate to header 1
 h1.append(p);
 
@@ -77,18 +77,6 @@ const priceHeader = document.createElement("th");
 priceHeader.textContent = "PRICE";
 table.append(priceHeader);
 
-// function generates random freelancer
-function randomFreelancer(array) {
-
-    body.addEventListener("onloadstart", function() {
-        h3.textContent = `Featured Freelancer:`;
-        h1.append(h3);
-    })
-
-}
-
-randomFreelancer(freelancerArray);
-
 // function displays freelancer roster to web page
 function displayFreelancers(array) {
 
@@ -109,12 +97,13 @@ function displayFreelancers(array) {
         tableRow.append(jobData);
 
         const priceData = document.createElement("td");
-        priceData.textContent = `${person.price}`;
+        priceData.textContent = `$${person.price}`;
         tableRow.append(priceData);
         
     })
 
 }
 
+
 // call to function to display freelancer roster
-displayFreelancers(freelancerArray);
+displayFreelancers(NUM_FREELANCER);
