@@ -37,45 +37,67 @@ const container = document.createElement("div");
 //Variable stores div container for the freelancer table
 const tableContainer = document.createElement("div");
 // Appends main div container to body element
-body.append(container);
+body.appendChild(container);
 
 // variable stores header 1 element
 const h1 = document.createElement("h1");
 // Assigned text to header
 h1.textContent = "The Freelancer Forum";
 // Append header 1 to main div container
-container.append(h1);
+container.appendChild(h1);
 // Append div container for table of freelancers to main div container;
-container.append(tableContainer);
+container.appendChild(tableContainer);
 
 // Variable stores paragraph element
 const p = document.createElement("p");
 // Adds text of average rate to paragraph
 p.textContent = `The average rate is $${avgRate(NUM_FREELANCER)}`;
 // Append paragraph of average rate to header 1
-h1.append(p);
+h1.appendChild(p);
 
 // Variable store table element
 const table = document.createElement("table");
 // Append table to container made for table
-tableContainer.append(table);
+tableContainer.appendChild(table);
 
 // Variable stores table header element
 const nameHeader = document.createElement("th");
 // Variable stores name header for freelancer table;
 nameHeader.textContent = "NAME";
 // Append name header to table
-table.append(nameHeader);
+table.appendChild(nameHeader);
 
 // variable stores occupation table header
 const occupationHeader = document.createElement("th");
 occupationHeader.textContent = "OCCUPATION";
-table.append(occupationHeader);
+table.appendChild(occupationHeader);
 
 // variable stores price header for freelancer table
 const priceHeader = document.createElement("th");
 priceHeader.textContent = "PRICE";
-table.append(priceHeader);
+table.appendChild(priceHeader);
+
+// component function returns random freelancer's information
+function getPerson(array) {
+    // Generates random number based on array NUM_FREELANCER's length.
+    const randomNum = Math.floor(Math.random() * NUM_FREELANCER.length);
+    // Variable stores person element of array
+    const getRandomPerson = array[randomNum];
+    return getRandomPerson
+}
+
+// function displays random freelancer's information
+function displayGotPerson() {
+    const gotPersonContainer = document.createElement("div");
+    const featuredPerson = document.createElement("p");
+    const person = getPerson(NUM_FREELANCER);
+
+    // stores person's information as Featured Freelancer
+    featuredPerson.textContent = `Featured Freelancer: ${person.name} ${person.occupation} $${person.price} per hour`;
+    document.body.appendChild(gotPersonContainer);
+    gotPersonContainer.appendChild(featuredPerson);
+    return featuredPerson
+}
 
 // function displays freelancer roster to web page
 function displayFreelancers(array) {
@@ -86,24 +108,26 @@ function displayFreelancers(array) {
         const price = person.price;
 
         const tableRow = document.createElement("tr");
-        table.append(tableRow);
+        table.appendChild(tableRow);
 
         const nameData = document.createElement("td");
         nameData.textContent = `${person.name}`;
-        tableRow.append(nameData);
+        tableRow.appendChild(nameData);
 
         const jobData = document.createElement("td");
         jobData.textContent = `${person.occupation}`;
-        tableRow.append(jobData);
+        tableRow.appendChild(jobData);
 
         const priceData = document.createElement("td");
         priceData.textContent = `$${person.price}`;
-        tableRow.append(priceData);
+        tableRow.appendChild(priceData);
         
     })
 
 }
 
-
+// Function called to display random freelancer
+displayGotPerson();
 // call to function to display freelancer roster
 displayFreelancers(NUM_FREELANCER);
+
