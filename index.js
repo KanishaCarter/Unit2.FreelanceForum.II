@@ -11,7 +11,7 @@ const OCCUPATIONS = ["Writer", "Teacher", "Programmer", "Designer", "Engineer"];
 const PRICE_RANGE = { min: 20, max: 200 };
 const NUM_FREELANCERS = 100;
 
-
+function init(){
 // Freelancer Array
 const NUM_FREELANCER = [
     {name:"Alice", occupation: "Writer", price: 40},
@@ -130,4 +130,7 @@ function displayFreelancers(array) {
 displayGotPerson();
 // call to function to display freelancer roster
 displayFreelancers(NUM_FREELANCER);
+}
+
+init();
 
